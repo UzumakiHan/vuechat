@@ -31,7 +31,9 @@ jobs:
         run: |
            pnpm install
       - name: Build
-        run: npm run build
+        run: | 
+           npm run build
+           ls
           
       - name: Release
         uses: google-github-actions/release-please-action@v3
