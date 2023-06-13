@@ -3,7 +3,6 @@ import axios from 'axios'
 import qs from 'qs'
 
 export function get(url, data) {
-    //console.log(data)
     return new Promise((resolve, reject) => {
 
         axios.get(url, {
