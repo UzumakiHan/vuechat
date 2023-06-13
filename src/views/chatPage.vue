@@ -147,7 +147,7 @@
 			this.friendsList = this.$store.state.userInfo.friendsList;
 			this.sendUserInfo = this.$store.state.userInfo;
 			// console.log()
-			this.socket = this.$socketio.connect("http://127.0.0.1:3000", {
+			this.socket = this.$socketio.connect(this.$socketHost, {
 				transports: ["websocket", "xhr-polling", "jsonp-polling"]
 			});
 			this.socket.on("receiveChatMessage", msg => {

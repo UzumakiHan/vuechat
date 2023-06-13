@@ -82,7 +82,7 @@
 			}
 			
 			//console.log(this.$store.state.userInfo)
-			this.socket = this.$socketio.connect("http://127.0.0.1:3000", {
+			this.socket = this.$socketio.connect(this.$socketHost, {
 				transports: ["websocket", "xhr-polling", "jsonp-polling"]
 			});
 

@@ -40,7 +40,7 @@
 			if(this.userid){
 				this.getUserInfo()
 			}
-			this.socket = this.$socketio.connect("http://127.0.0.1:3000", {
+			this.socket = this.$socketio.connect(this.$socketHost, {
 				transports: ["websocket", "xhr-polling", "jsonp-polling"]
 			});
 			//显示是谁发来的消息）

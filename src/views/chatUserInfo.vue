@@ -87,7 +87,7 @@
 			// this.$router.go(0);
 			this.userinfo = JSON.parse(this.$route.query.userinfo);
 			//console.log(this.userinfo);
-			this.socket = this.$socketio.connect("http://127.0.0.1:3000", {
+			this.socket = this.$socketio.connect(this.$socketHost, {
 				transports: ["websocket", "xhr-polling", "jsonp-polling"]
 			});
 			this.getUserInfo();

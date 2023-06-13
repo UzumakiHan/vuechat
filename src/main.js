@@ -32,12 +32,14 @@ const socketHost = process.env.NODE_ENV==='development'?process.env.VUE_DEV_HOST
 console.log(socketHost)
 Vue.use(new VueSocketio({
 	debug: true,
-	connection: socketio.connect('http://43.142.90.39:11112', {
+	connection: socketio.connect(socketHost, {
 		path: '',  //如果地址是wss path:"/wss"
 		transports: ['websocket', 'xhr-polling', 'jsonp-polling'],
 	}) 
 }));  
 Vue.prototype.$socketio = socketio;
+Vue.prototype.$socketHost = socketHost;
+
 
 new Vue({
   router, 
