@@ -33,6 +33,7 @@ specifiers:
   qs: ^6.9.6
   recorderx: ^2.0.2
   socket.io-client: ^3.1.1
+  typescript: ^5.1.3
   vant: ^2.12.6
   vue: ^2.6.11
   vue-baidu-map: ^0.21.22
@@ -76,7 +77,7 @@ devDependencies:
   '@vue/cli-plugin-eslint': registry.npmmirror.com/@vue/cli-plugin-eslint/4.5.19_fepo2kslcuyry2fkxxpiwlhxb4
   '@vue/cli-plugin-router': registry.npmmirror.com/@vue/cli-plugin-router/4.5.19_@vue+cli-service@4.5.19
   '@vue/cli-plugin-vuex': registry.npmmirror.com/@vue/cli-plugin-vuex/4.5.19_@vue+cli-service@4.5.19
-  '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa
+  '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga
   '@vue/eslint-config-standard': registry.npmmirror.com/@vue/eslint-config-standard/5.1.2_bt6tnng7x7e7xvdoc4egpjiiuu
   babel-plugin-import: registry.npmmirror.com/babel-plugin-import/1.13.6
   eslint: registry.npmmirror.com/eslint/6.8.0
@@ -86,6 +87,7 @@ devDependencies:
   eslint-plugin-standard: registry.npmmirror.com/eslint-plugin-standard/4.1.0_eslint@6.8.0
   eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/6.2.2_eslint@6.8.0
   postcss-pxtorem: registry.npmmirror.com/postcss-pxtorem/5.1.1
+  typescript: registry.npmmirror.com/typescript/5.1.3
   vue-template-compiler: registry.npmmirror.com/vue-template-compiler/2.7.14
 
 packages:
@@ -838,7 +840,7 @@ packages:
       '@vue/cli-service': ^3.0.0 || ^4.0.0-0
       eslint: '>= 1.6.0 < 7.0.0'
     dependencies:
-      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa
+      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga
       '@vue/cli-shared-utils': registry.npmmirror.com/@vue/cli-shared-utils/4.5.19
       eslint: registry.npmmirror.com/eslint/6.8.0
       eslint-loader: registry.npmmirror.com/eslint-loader/2.2.1_pfvmeq6opgydpezktw7j2dwffi
@@ -860,7 +862,7 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0-0
     dependencies:
-      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa
+      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga
       '@vue/cli-shared-utils': registry.npmmirror.com/@vue/cli-shared-utils/4.5.19
     dev: true
 
@@ -872,10 +874,10 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0-0
     dependencies:
-      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa
+      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga
     dev: true
 
-  registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa:
+  registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga:
     resolution: {integrity: sha512-+Wpvj8fMTCt9ZPOLu5YaLkFCQmB4MrZ26aRmhhKiCQ/4PMoL6mLezfqdt6c+m2htM+1WV5RunRo+0WHl2DfwZA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/cli-service/-/cli-service-4.5.19.tgz}
     id: registry.npmmirror.com/@vue/cli-service/4.5.19
     name: '@vue/cli-service'
@@ -948,7 +950,7 @@ packages:
       lodash.transform: registry.npmmirror.com/lodash.transform/4.6.0
       mini-css-extract-plugin: registry.npmmirror.com/mini-css-extract-plugin/0.9.0_webpack@4.46.0
       minimist: registry.npmmirror.com/minimist/1.2.8
-      pnp-webpack-plugin: registry.npmmirror.com/pnp-webpack-plugin/1.7.0
+      pnp-webpack-plugin: registry.npmmirror.com/pnp-webpack-plugin/1.7.0_typescript@5.1.3
       portfinder: registry.npmmirror.com/portfinder/1.0.32
       postcss-loader: registry.npmmirror.com/postcss-loader/3.0.0
       ssri: registry.npmmirror.com/ssri/8.0.1
@@ -1144,7 +1146,7 @@ packages:
       '@vue/cli-service':
         optional: true
     dependencies:
-      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_o7fz4wlib7qyycxiajhgrodmxa
+      '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/4.5.19_pdt6edxrr3l7whma5wel3nvwga
       eslint: registry.npmmirror.com/eslint/6.8.0
       eslint-config-standard: registry.npmmirror.com/eslint-config-standard/14.1.1_z6ydidse4i7j2jwsbhu5po3sgu
       eslint-import-resolver-node: registry.npmmirror.com/eslint-import-resolver-node/0.3.7
@@ -8306,13 +8308,14 @@ packages:
     dependencies:
       find-up: registry.npmmirror.com/find-up/4.1.0
 
-  registry.npmmirror.com/pnp-webpack-plugin/1.7.0:
+  registry.npmmirror.com/pnp-webpack-plugin/1.7.0_typescript@5.1.3:
     resolution: {integrity: sha512-2Rb3vm+EXble/sMXNSu6eoBx8e79gKqhNq9F5ZWW6ERNCTE/Q0wQNne5541tE5vKjfM8hpNCYL+LGc1YTfI0dg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.7.0.tgz}
+    id: registry.npmmirror.com/pnp-webpack-plugin/1.7.0
     name: pnp-webpack-plugin
     version: 1.7.0
     engines: {node: '>=6'}
     dependencies:
-      ts-pnp: registry.npmmirror.com/ts-pnp/1.2.0
+      ts-pnp: registry.npmmirror.com/ts-pnp/1.2.0_typescript@5.1.3
     transitivePeerDependencies:
       - typescript
     dev: true
@@ -10595,8 +10598,9 @@ packages:
     version: 1.0.1
     dev: true
 
-  registry.npmmirror.com/ts-pnp/1.2.0:
+  registry.npmmirror.com/ts-pnp/1.2.0_typescript@5.1.3:
     resolution: {integrity: sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ts-pnp/-/ts-pnp-1.2.0.tgz}
+    id: registry.npmmirror.com/ts-pnp/1.2.0
     name: ts-pnp
     version: 1.2.0
     engines: {node: '>=6'}
@@ -10605,6 +10609,8 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+    dependencies:
+      typescript: registry.npmmirror.com/typescript/5.1.3
     dev: true
 
   registry.npmmirror.com/tsconfig-paths/3.14.2:
@@ -10696,6 +10702,14 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typedarray/-/typedarray-0.0.6.tgz}
     name: typedarray
     version: 0.0.6
+    dev: true
+
+  registry.npmmirror.com/typescript/5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/typescript/-/typescript-5.1.3.tgz}
+    name: typescript
+    version: 5.1.3
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   registry.npmmirror.com/uc.micro/1.0.6:
