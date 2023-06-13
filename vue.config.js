@@ -20,7 +20,7 @@ module.exports = {
     proxy: {
       //以'/api'开头的接口会转接到下面的target的ip;
       '/api': {
-        target: process.env.NODE_ENV==='development'?process.env.VUE__APP_DEV_HOST:process.env.VUE_APP_PRO_HOST, // target host
+        target: process.env.NODE_ENV==='development'?process.env.VUE_APP_DEV_HOST:process.env.VUE_APP_PRO_HOST, // target host
         changeOrigin: true, // needed for virtual hosted sites
         ws: false, // proxy websockets
         pathRewrite: {
