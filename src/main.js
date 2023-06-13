@@ -37,18 +37,6 @@ Vue.use(new VueSocketio({
 	}) 
 }));  
 Vue.prototype.$socketio = socketio;
-// 进入路由前方法勾子
-// router.beforeEach((to, from, next) => {
-
-// //这里暂时用local、storange来简单模拟验证权限
-//   if (localStorage.getItem("user")) {
-//     // 如果存在，则直接跳转到对应路由
-//      next();
-//   } else {
-//     // 如果不存在，则跳转到登录页
-//     next('/login');
-//   }
-// });
 
 new Vue({
   router, 
