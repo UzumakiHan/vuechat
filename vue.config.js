@@ -1,4 +1,5 @@
 //vue.config.js
+console.log(process.env)
 module.exports = {
   
   lintOnSave: false,
@@ -19,7 +20,7 @@ module.exports = {
     proxy: {
       //以'/api'开头的接口会转接到下面的target的ip
       '/api': {
-        target: 'http://127.0.0.1:3000', // target host
+        target: process.env.NODE_ENV==='development'?VUE_DEV_HOST:VUE_PRO_HOST, // target host
         changeOrigin: true, // needed for virtual hosted sites
         ws: false, // proxy websockets
         pathRewrite: {
@@ -29,7 +30,7 @@ module.exports = {
         logLevel: 'debug'
       },
       '/socket.io': {
-        target: 'http://127.0.0.1:3000', // target host
+        target: process.env.NODE_ENV==='development'?VUE_DEV_HOST:VUE_PRO_HOST, // target host
         changeOrigin: true, // needed for virtual hosted sites
         logLevel: 'debug'
       }
