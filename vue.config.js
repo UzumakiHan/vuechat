@@ -18,7 +18,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      //以'/api'开头的接口会转接到下面的target的ip
+      //以'/api'开头的接口会转接到下面的target的ip;
       '/api': {
         target: process.env.NODE_ENV==='development'?VUE_DEV_HOST:VUE_PRO_HOST, // target host
         changeOrigin: true, // needed for virtual hosted sites
