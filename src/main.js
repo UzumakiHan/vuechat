@@ -29,14 +29,6 @@ import socketio from 'socket.io-client';
 import VueSocketio from 'vue-socket.io'
 //  http://192.168.0.159:2120是你家后台给你的地址
 const socketHost = process.env.NODE_ENV==='development'?process.env.VUE_APP_DEV_HOST:process.env.VUE_APP_PRO_HOST
-console.log(process.env)
-
-console.log(process.env.NODE_ENV==='development')
-console.log(process.env.VUE_APP_DEV_HOST)
-console.log(process.env.VUE_APP_PRO_HOST)
-
-
-console.log(socketHost)
 Vue.use(new VueSocketio({
 	debug: true,
 	connection: socketio.connect(socketHost, {
