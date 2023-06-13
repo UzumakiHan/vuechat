@@ -34,6 +34,20 @@ jobs:
         run: | 
            npm run build
            ls
+      - name: Deploy to Server # 执行部署任务
+      uses: cross-the-world/ssh-scp-ssh-pipelines@latest 
+      with:
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USER }}
+          pass: ${{ secrets.SERVER_PASS }}
+
+          # 由于网路情况，很容易超时，设置为60s
+          connect_timeout: 60s
+          first_ssh: |
+             ls -la
+          # 将工作目录下的文件全部拷贝到部署服务器的工作目录
+          scp: |
+            ./dist => /home/HHJ/nodeProject/vuechat-server
           
       - name: Release
         uses: google-github-actions/release-please-action@v3

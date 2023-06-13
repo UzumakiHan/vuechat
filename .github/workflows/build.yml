@@ -15,8 +15,20 @@ jobs:
       - name: Checkout  ️ 
         uses: actions/checkout@v3
 
-      - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
+       - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      
+      - name: Set node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+
+      - name: Install dependencies
         run: |
-          npm ci
-          npm run build
-          ls
+           pnpm install
+      - name: Build
+        run: | 
+           npm run build
