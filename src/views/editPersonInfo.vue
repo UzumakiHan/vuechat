@@ -99,7 +99,9 @@
 						"Content-Type": "multipart/form-data"
 					}
 				};
-				axios.post("/api/user/editVueChatInfo", formData, headers).then(res => {
+const editVueChatInfoApi = process.env.NODE_ENV==='development'?'/api/user/editVueChatInfo':'/user/editVueChatInfo'
+
+				axios.post(editVueChatInfoApi, formData, headers).then(res => {
 					//console.log(res)
 					if (res.data.status === 2) {
 						Toast(res.data.message);
