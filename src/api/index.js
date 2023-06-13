@@ -1,5 +1,8 @@
 import {post,get} from './ajax';
-const BASE_URL = process.env.NODE_ENV==='development'?'/api':''
+// const BASE_URL = process.env.NODE_ENV==='development'?'/api':''
+console.log(process.env.NODE_ENV)
+const BASE_URL = ''
+
 
 //获取验证码接口
 export const getCaptchaSvg = () => get(BASE_URL+`/user/captcha?time=${new Date()}`);

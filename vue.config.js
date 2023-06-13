@@ -1,5 +1,5 @@
 //vue.config.js
-console.log(process.env)
+// console.log(process.env)
 module.exports = {
   
   lintOnSave: false,
