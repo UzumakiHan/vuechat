@@ -28,9 +28,10 @@ import socketio from 'socket.io-client';
 
 import VueSocketio from 'vue-socket.io'
 //  http://192.168.0.159:2120是你家后台给你的地址
+const socketHost = process.env.NODE_ENV==='development'?process.env.VUE_DEV_HOST:process.env.VUE_PRO_HOST
 Vue.use(new VueSocketio({
 	debug: true,
-	connection: socketio.connect('http://127.0.0.1:3000', {
+	connection: socketio.connect(socketHost, {
 		path: '',  //如果地址是wss path:"/wss"
 		transports: ['websocket', 'xhr-polling', 'jsonp-polling'],
 	}) 
