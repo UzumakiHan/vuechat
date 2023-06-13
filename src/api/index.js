@@ -1,6 +1,6 @@
 import {post,get} from './ajax';
 // const BASE_URL = process.env.NODE_ENV==='development'?'/api':''
-console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV==='development'?'/api':'')
 const BASE_URL = ''
 
 
