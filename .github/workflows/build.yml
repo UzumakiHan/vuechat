@@ -15,7 +15,7 @@ jobs:
       - name: Checkout  ️ 
         uses: actions/checkout@v3
 
-       - name: Install pnpm
+      - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 7
