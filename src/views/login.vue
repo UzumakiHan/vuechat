@@ -90,7 +90,7 @@
 				this.$router.push("/register");
 			},
 			async getCaptcha() {
-				const captchaApi = process.env.NODE_ENV==='development'?process.env.VUE_DEV_HOST:process.env.VUE_PRO_HOST;
+				const captchaApi = process.env.NODE_ENV==='development'?process.env.VUE_APP_DEV_HOST:process.env.VUE_APP_PRO_HOST;
 				this.svgcaptcha = `${captchaApi}/user/captcha?time=${new Date()}`
 
 			},
