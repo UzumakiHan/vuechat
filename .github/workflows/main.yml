@@ -35,8 +35,8 @@ jobs:
            npm run build
            ls
       - name: Deploy to Server # 执行部署任务
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest 
-      with:
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest 
+        with:
           host: ${{ secrets.SERVER_HOST }}
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
