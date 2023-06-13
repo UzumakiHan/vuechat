@@ -1,0 +1,33 @@
+name: CI Github Pages
+on:
+  #监听push操作
+  push:
+    branches:
+      - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
+      
+jobs:
+  # 任务ID
+  build-and-deploy:
+    # 运行环境
+    runs-on: ubuntu-latest
+    # 步骤
+    steps:
+      # 官方action，将代码拉取到虚拟机
+      - name: Checkout  ️ 
+        uses: actions/checkout@v3
+
+      - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
+        run: |
+          npm install
+          npm run build
+          
+      - name: Release
+        uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          release-type: node
+          package-name: release-please-action
+          changelog-types: '[{"type": "chore", "section":"🎫 Chores | 其他更新", "hidden": false},{"type": "revert", "section":"⏪ Reverts | 回退", "hidden": false},{"type": "feat", "section": "✨ Features | 新功能", "hidden": false},{"type": "fix", "section": "🐛 Bug Fixes | Bug 修复", "hidden": false},{"type": "improvement", "section": "Feature Improvements", "hidden": false},{"type": "docs", "section":"📝 Documentation | 文档", "hidden": false},{"type": "style", "section":"💄 Styles | 风格", "hidden": false},{"type": "refactor", "section":"💄 Styles | 风格", "hidden": false},{"type": "perf", "section":"⚡ Performance Improvements | 性能优化", "hidden": false},{"type": "test", "section":"✅ Tests | 测试", "hidden": false},{"type": "build", "section":"👷‍ Build System | 构建", "hidden": false},{"type": "ci", "section":"🔧 Continuous Integration | CI 配置", "hidden":false}]' 
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
