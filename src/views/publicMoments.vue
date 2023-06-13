@@ -160,7 +160,8 @@
 						"Content-Type": "multipart/form-data"
 					}
 				};
-				axios.post("/api/wechatmoment/publicMoment", formData, headers).then(res => {
+				const publicMomentApi = process.env.NODE_ENV==='development'?'/api/wechatmoment/publicMoment':'/wechatmoment/publicMoment'
+				axios.post(publicMomentApi, formData, headers).then(res => {
 					//console.log(res)
 					this.momentText = '';
 					this.imgList = [];

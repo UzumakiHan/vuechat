@@ -71,7 +71,9 @@
 						"Content-Type": "multipart/form-data"
 					}
 				};
-				axios.post("/api/chatroom/myChatRoom", formData, headers).then(res=>{
+				const myChatRoomApi = process.env.NODE_ENV==='development'?'/api/chatroom/myChatRoom':'/chatroom/myChatRoom'
+
+				axios.post(myChatRoomApi, formData, headers).then(res=>{
 					// console.log(res)
 					if(res.data.status === 2){
 						this.myChatGrounp = res.data.allMyChatRoom;

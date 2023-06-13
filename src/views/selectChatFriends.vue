@@ -170,7 +170,9 @@
 									"Content-Type": "multipart/form-data"
 								}
 							};
-							axios.post("/api/chatroom/addChatMember", formData, headers).then(res => {
+				const addChatMemberApi = process.env.NODE_ENV==='development'?'/api/chatroom/addChatMember':'/chatroom/addChatMember'
+
+							axios.post(addChatMemberApi, formData, headers).then(res => {
 								console.log(res)
 								if (res.data.status === 2) {
 									Toast(res.data.message);
@@ -206,7 +208,9 @@
 								"Content-Type": "multipart/form-data"
 							}
 						};
-						axios.post("/api/chatroom/createChatRoom", formData, headers).then(res => {
+				const createChatRoomApi = process.env.NODE_ENV==='development'?'/api/chatroom/createChatRoom':'/chatroom/createChatRoom'
+
+						axios.post(createChatRoomApi, formData, headers).then(res => {
 							console.log(res)
 							if (res.data.status === 2) {
 								Toast(res.data.message);
