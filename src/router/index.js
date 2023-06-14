@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/login.vue';
 import MailList from '../views/mailList.vue';
+
 import My from '../views/my.vue';
 import WechatMoments from '../views/wechatMoments.vue';
 import ChatPage from '../views/chatPage.vue';
@@ -236,9 +237,13 @@ router.beforeEach((to, from, next) => {
     // from 代表从那个路径跳转而来
     // next 是一个函数，表示放行
     // next() 放行 next('/login') 强制跳转
-    if (to.path === '/login') { return next(); }
+    if (to.path === '/login') {
+        return next();
+    }
     const vuechattoken = JSON.parse(localStorage.getItem('vuechattoken'));
     // console.log(vuechattoken)
-    if (!vuechattoken) { return next('/login'); }
+    if (!vuechattoken) {
+        return next('/login');
+    }
     next();
 });
