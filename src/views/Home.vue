@@ -245,7 +245,6 @@ export default {
         },
         // JS数组去重，JS根据数组里面的对象属性值去重
         arrayUnique(arr, name) {
-            console.log(1);
             const hash = {};
             return arr.reverse().reduce(function (item, next) {
                 // eslint-disable-next-line sonarjs/no-redundant-boolean,no-unused-expressions
