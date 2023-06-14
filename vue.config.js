@@ -1,7 +1,19 @@
 //vue.config.js
-// console.log(process.env)
+console.log(process.env)
+const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 module.exports = {
-  
+  configureWebpack:{
+    plugins: [
+      sentryWebpackPlugin({
+        org: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
+        url:process.env.SENTRY_URL,
+        // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
+        // and need `project:releases` and `org:read` scopes
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+      }),
+    ],
+  },
   lintOnSave: false,
   css: {
     loaderOptions: {
