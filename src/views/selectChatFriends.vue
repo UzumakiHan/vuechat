@@ -7,18 +7,17 @@
             left-text="返回"
             left-arrow
             @click-left="onClickLeft"
-        >
-        </van-nav-bar>
+        />
         <van-index-bar
-            highlight-color="#fb6463"
-            style="margin-top: 50px; z-index: 97; margin-bottom: 70px"
             v-if="mailList.length > 0"
+            highlight-color="#fb6463"
+            style=" z-index: 97;margin-top: 50px; margin-bottom: 70px"
         >
             <div
                 v-for="(mailName, index) in LastMailList"
                 :key="index"
             >
-                <van-index-anchor :index="index"></van-index-anchor>
+                <van-index-anchor :index="index" />
                 <van-checkbox-group v-model="selectResult">
                     <van-cell-group>
                         <van-cell
@@ -28,9 +27,8 @@
                             @click="toggle(item)"
                         >
                             <van-checkbox
-                                :name="item"
                                 ref="checkboxes"
-                                slot="right-icon"
+                                :name="item"
                             />
                             <van-image
                                 width="50"
@@ -46,25 +44,28 @@
                 <van-button
                     type="primary"
                     @click="checkAll"
-                    >全选</van-button
                 >
+                    全选
+                </van-button>
                 <van-button
                     type="info"
-                    @click="toggleAll"
                     style="margin: 0 10px"
-                    >反选</van-button
+                    @click="toggleAll"
                 >
+                    反选
+                </van-button>
                 <van-button
                     type="info"
-                    @click="sureAddChat"
                     color="#337ab7"
-                    >确定</van-button
+                    @click="sureAddChat"
                 >
+                    确定
+                </van-button>
             </van-cell>
         </van-index-bar>
         <van-empty
-            description="暂无好友"
             v-else
+            description="暂无好友"
         />
     </div>
 </template>
@@ -107,7 +108,7 @@ export default {
                 'Y',
                 'Z'
             ],
-            mailList: [], //通讯录数据
+            mailList: [], // 通讯录数据
             LastMailList: {},
             wechatBg: require('../assets/images/wechatbg.png'),
             chatRoomMemberId: null,
@@ -117,21 +118,14 @@ export default {
     },
     mounted() {
         this.userid = localStorage.getItem('vuechatid');
-        // try {
-        // 	this.chatRoomMemberId = JSON.parse(this.$route.query.chatRoomMemberId);
-        // } catch (err) {
-        // 	throw (err)
-        // }
         if (this.$route.query.chatRoomInfo) {
             this.chatRoomInfo = JSON.parse(this.$route.query.chatRoomInfo);
             this.chatRoomMemberId = this.chatRoomInfo.chatRoomMemberId;
             this.chatRoomId = this.chatRoomInfo._id;
-            console.log(this.chatRoomInfo);
         }
-        // console.log(this.chatRoomMemberId)
         this.getMailList();
         Array.prototype.remove = function (val) {
-            var index = this.indexOf(val);
+            const index = this.indexOf(val);
             if (index > -1) {
                 this.splice(index, 1);
             }
@@ -139,10 +133,9 @@ export default {
     },
     methods: {
         toggle(item) {
-            //console.log(item)
-            let allcheckboxes = this.$refs.checkboxes;
+            const allcheckboxes = this.$refs.checkboxes;
             allcheckboxes.forEach(checkboxes => {
-                if (item._id == checkboxes.name._id) {
+                if (item._id === checkboxes.name._id) {
                     if (checkboxes.checked) {
                         this.selectResult.remove(item);
                     } else {
@@ -151,17 +144,17 @@ export default {
                 }
             });
         },
-        //全选
+        // 全选
         checkAll() {
             this.selectResult = [];
-            let allcheckboxes = this.$refs.checkboxes;
+            const allcheckboxes = this.$refs.checkboxes;
             allcheckboxes.forEach(checkboxes => {
                 this.selectResult.push(checkboxes.name);
             });
         },
-        //反选
+        // 反选
         toggleAll() {
-            let allcheckboxes = this.$refs.checkboxes;
+            const allcheckboxes = this.$refs.checkboxes;
             allcheckboxes.forEach(checkboxes => {
                 if (checkboxes.checked) {
                     this.selectResult.remove(checkboxes.name);
@@ -170,34 +163,31 @@ export default {
                 }
             });
         },
-        //确定添加
+        // 确定添加
         async sureAddChat() {
-            // console.log(this.selectResult)
-            //添加群成员
+            // 添加群成员
             if (this.chatRoomMemberId) {
                 if (this.selectResult.length > 0) {
-                    let selectResultIds = [];
+                    const selectResultIds = [];
                     this.selectResult.forEach(chatRoomMember => {
                         selectResultIds.push(chatRoomMember._id);
                     });
-                    //比较
-                    let filterResult = selectResultIds.filter(n => {
-                        return this.chatRoomMemberId.indexOf(n) != -1;
+                    // 比较
+                    const filterResult = selectResultIds.filter(n => {
+                        return this.chatRoomMemberId.indexOf(n) !== -1;
                     });
-                    // console.log(filterResult)
                     if (filterResult.length > 0) {
                         Toast('请勿重复添加群成员');
                     } else {
-                        //把选择的群成员和原有的群成员合在一起
-                        let allChatRoomMember = this.chatRoomMemberId.concat(selectResultIds);
-                        console.log(allChatRoomMember);
-                        console.log(this.chatRoomId);
+                        // 把选择的群成员和原有的群成员合在一起
+                        const allChatRoomMember = this.chatRoomMemberId.concat(selectResultIds);
                         const formData = new FormData();
                         formData.append('chatRoomMemberId', JSON.stringify(allChatRoomMember));
                         formData.append('chatRoomId', this.chatRoomId);
                         formData.append('selectResultIds', JSON.stringify(selectResultIds));
-                        let headers = {
+                        const headers = {
                             headers: {
+                                // eslint-disable-next-line @typescript-eslint/naming-convention
                                 'Content-Type': 'multipart/form-data'
                             }
                         };
@@ -209,38 +199,33 @@ export default {
                         axios
                             .post(addChatMemberApi, formData, headers)
                             .then(res => {
-                                console.log(res);
+                                Toast(res.data.message);
                                 if (res.data.status === 2) {
-                                    Toast(res.data.message);
                                     this.$router.push('/mychatgrounp');
-                                } else {
-                                    Toast(res.data.message);
                                 }
                             })
                             .catch(err => {
-                                console.log(err);
+                                throw Error(err);
                             });
                     }
-                    // console.log(filterResult)
-                    // console.log(this.chatRoomMemberId)
                 } else {
                     Toast('请选择好友');
                 }
             } else {
-                //创建群聊
+                // 创建群聊
                 if (this.selectResult.length > 1) {
                     const formData = new FormData();
-                    let chatRoomMemberId = [];
+                    const chatRoomMemberId = [];
                     this.selectResult.forEach(member => {
                         chatRoomMemberId.push(member._id);
                     });
                     chatRoomMemberId.push(this.userid);
-                    console.log(chatRoomMemberId);
                     formData.append('chatRoomMemberId', JSON.stringify(chatRoomMemberId));
                     formData.append('chatRoomImg', this.wechatBg);
                     formData.append('chatRoomOwner', this.userid);
-                    let headers = {
+                    const headers = {
                         headers: {
+                            // eslint-disable-next-line @typescript-eslint/naming-convention
                             'Content-Type': 'multipart/form-data'
                         }
                     };
@@ -252,7 +237,6 @@ export default {
                     axios
                         .post(createChatRoomApi, formData, headers)
                         .then(res => {
-                            console.log(res);
                             if (res.data.status === 2) {
                                 Toast(res.data.message);
                                 this.$router.push('/mychatgrounp');
@@ -261,58 +245,48 @@ export default {
                             }
                         })
                         .catch(err => {
-                            console.log(err);
+                            throw Error(err);
                         });
                 } else {
                     Toast('请选择大于1个人的群聊');
                 }
             }
         },
-        //通讯录获取
+        // 通讯录获取
         async getMailList() {
-            let id = localStorage.getItem('vuechatid');
-            // console.log(id);
+            const id = localStorage.getItem('vuechatid');
             const result = await getMailList(id);
-            //	console.log(result);
             this.mailList = result.data.mailList;
-            // conso
             this.initMailList();
         },
-        //将获取到的数据转化成通讯录格式的数据
+        // 将获取到的数据转化成通讯录格式的数据
         initMailList() {
-            //拼接数据
-            let firstName = {};
+            // 拼接数据
+            const firstName = {};
             this.AlphabetList.forEach(item => {
                 firstName[item] = [];
                 this.mailList.forEach(el => {
-                    //  console.log(el)
-                    let firstStr = el.vuechatAccount.substring(0, 1);
+                    const firstStr = el.vuechatAccount.substring(0, 1);
                     let first;
-                    // console.log(/[A-z]/.test(el.substring(0, 1)))
                     if (/[A-z]/.test(firstStr)) {
-                        // console.log(/[A-Z]/.test(el))
                         if (/[A-Z]/.test(el.vuechatAccount)) {
                             first = el.vuechatAccount.substring(0, 1);
                         } else {
                             first = el.vuechatAccount.substring(0, 1).toUpperCase();
                         }
-                        if (first == item) {
+                        if (first === item) {
                             firstName[item].push(el);
                         }
-                        //大小写转换
+                        // 大小写转换
                     } else {
-                        /** 主要在这一句，el代表每个名字如 “安琪拉” ，
-							pinyin.getFirstLetter(el) 取的是名字的首字母 “AQL” ，
-							.substring(0, 1) 就是只取第一个字符 ‘A’ **/
                         first = pinyin.getFirstLetter(el.vuechatAccount).substring(0, 1);
-                        if (first == item) {
+                        if (first === item) {
                             firstName[item].push(el);
                         }
                     }
                 });
             });
             this.LastMailList = firstName;
-            // console.log(firstName)
         },
         onClickLeft() {
             this.$router.go(-1);

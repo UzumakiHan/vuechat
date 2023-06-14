@@ -6,20 +6,18 @@
             left-text="返回"
             left-arrow
             @click-left="onClickLeft"
-        >
-        </van-nav-bar>
+        />
         <baidu-map
             :center="center"
             :zoom="zoom"
+            style=" width: 100%;height: 621px"
             @ready="handler"
-            style="height: 621px; width: 100%"
         >
             <bm-geolocation
                 anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
-                :showAddressBar="true"
-                :autoLocation="true"
-            >
-            </bm-geolocation>
+                :show-address-bar="true"
+                :auto-location="true"
+            />
             <bm-marker
                 :position="center"
                 :dragging="true"
@@ -52,10 +50,9 @@ export default {
     //   },
     mounted() {
         this.latitudeAndlongitude = JSON.parse(this.$route.query.latitudeAndlongitude);
-        console.log(this.latitudeAndlongitude);
     },
     methods: {
-        handler({BMap, map}) {
+        handler() {
             // console.log(BMap, map)
             this.center.lng = this.latitudeAndlongitude.lng;
 
