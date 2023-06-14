@@ -1,16 +1,21 @@
 //vue.config.js
-console.log(process.env)
 const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
+const { DeleteSourceMapsPlugin } = require('webpack-delete-sourcemaps-plugin')
 module.exports = {
   configureWebpack:{
     plugins: [
+      new DeleteSourceMapsPlugin(),
       sentryWebpackPlugin({
+        include: './dist', 
+        ignoreFile: '.gitignore',
+        ignore: ['node_modules'], 
         org: process.env.SENTRY_ORG,
         project: process.env.SENTRY_PROJECT,
         url:process.env.SENTRY_URL,
         // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
         // and need `project:releases` and `org:read` scopes
         authToken: process.env.SENTRY_AUTH_TOKEN,
+        cleanArtifacts:true
       }),
     ],
   },
