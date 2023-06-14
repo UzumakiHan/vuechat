@@ -351,7 +351,6 @@ export default {
         },
         // 获取所有表情
         faceContent() {
-            console.log(1);
             this.faceShow = !this.faceShow;
             this.faceList = [];
             this.$refs.sendinput.foucs();
@@ -443,7 +442,7 @@ export default {
             });
             const voiceTime = Math.ceil((this.endtime - this.startime) / 1000);
             const formData = new FormData();
-            formData.append('chatVoice', wav, `${Date.parse(new Date())  }.wav`);
+            formData.append('chatVoice', wav, `${Date.parse(new Date())}.wav`);
             formData.append('voiceTime', voiceTime);
             const headers = {
                 headers: {
